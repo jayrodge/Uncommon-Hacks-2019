@@ -1,0 +1,22 @@
+Use of PrntScrn key
+Plagiarism with other similar solutions on the internet - MOSS (Measure of Software Similarity)
+Remote computer
+
+
+
+Experimentation: 3:00
+More than one person in the frame
+Use of snipping tool
+
+
+Use of screen sharing:
+	Screenshot in Python:
+		pyscreenshot
+		wxPython
+	Skype:
+		Dialog box with 4 buttons
+	TeamViewer:
+		Side Icon
+		Dialog Box
+	Chrome Remote Desktop:
+		Your desktop is currently been shared. Stop Sharing
