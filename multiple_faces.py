@@ -1,23 +1,29 @@
-from imutils import face_utils
-import imutils
-import dlib
 import cv2
+import dlib
+import time
+import imutils
+from time import sleep
+from imutils import face_utils
 
 detect = dlib.get_frontal_face_detector()
 predict = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+cap = cv2.VideoCapture(0)
 
-cap=cv2.VideoCapture(0)
+def main_logic():
+    ret, frame = cap.read()
+    frame = imutils.resize(frame, width=450)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    subjects = detect(gray, 0)
+    numberOfPeople = len((subjects))
+    print(numberOfPeople)
 
-while True:
-	ret, frame=cap.read()
-	frame = imutils.resize(frame, width=450)
-	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	subjects = detect(gray, 0)
-	print(len((subjects)))
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
-	if key == ord("q"):
-		break
+    if numberOfPeople > 1:
+        print("Maybe Cheating")
 
-cv2.destroyAllWindows()
-cap.stop()
+def time_scheduler():
+    t_end = time.time() + 5
+
+    while time.time() < t_end:
+        main_logic()
+
+time_scheduler()
