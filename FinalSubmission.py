@@ -3,6 +3,7 @@ import cv2
 import dlib
 import time
 import imutils
+import keyboard
 import threading
 from mss import mss
 from PIL import Image
@@ -19,7 +20,7 @@ def multiple_people():
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     subjects = detect(gray, 0)
     numberOfPeople = len((subjects))
-    print(numberOfPeople)
+    #print(numberOfPeople)
 
     if numberOfPeople > 1:
         print("Maybe Cheating through Multiple People")
@@ -28,7 +29,7 @@ def multiple_people():
 
 def screen_sharing():
     client = vision.ImageAnnotatorClient()
-    bbox = {'top': 0, 'left': 0, 'width': 1900, 'height': 980}
+    bbox = {'top': 0, 'left': 0, 'width': 1900, 'height': 1200}
     sct = mss()
     
     sct_img = sct.grab(bbox)
@@ -45,20 +46,23 @@ def screen_sharing():
     if output:
         print("Maybe Cheating through Screen Sharing")
     
-    #time.sleep(20)
+    #time.sleep(10)
         
 def thread_scheduler():
-    t_end = time.time() + 20
+    t_end = time.time() + 60
+    keyboard.block_key('print screen')
     
     while time.time() < t_end:
         screen_sharing_thread = threading.Thread(target=screen_sharing)
         multiple_people_thread = threading.Thread(target=multiple_people)
-    
+        
         screen_sharing_thread.start()
         multiple_people_thread.start()
   
         screen_sharing_thread.join()
         multiple_people_thread.join()
+    
+    keyboard.unblock_key('print screen')
 
 if __name__ == "__main__":
     thread_scheduler()
