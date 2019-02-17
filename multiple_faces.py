@@ -21,8 +21,7 @@ def main_logic():
         print("Maybe Cheating")
 
 def time_scheduler():
-    t_end = time.time() + 5
-
+    t_end = time.time() + 60
     while time.time() < t_end:
         main_logic()
 
