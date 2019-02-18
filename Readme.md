@@ -23,10 +23,11 @@ We are using several events to check if the candidate is doing cheating such as:
 
 We have noticed some trend over screensharing, such as when usng Google Chrome it shows text at the top such as 
 "Your desktop is currently shared with jayrodge15@gmail.com. Stop Button(Button)".
-![chrome]('./Images/GRD1.png')
+
+![chrome](./Images/GDR1.png)
 
 With Teamviewer, it shows:
 ![teamviewer](./Images/TeamViewer-1.png)
 
-*We used GCP's cloud vision api and Natural Langauage Processing for verifying and making sure applicant isn't using screensharing for the coding challenge and used Computer Vision and Deep Learning for detecting multiple faces in front of Camera*
+**We used GCP's cloud vision api and Natural Langauage Processing for verifying and making sure applicant isn't using screensharing for the coding challenge and used Computer Vision and Deep Learning for detecting multiple faces in front of Camera
 
