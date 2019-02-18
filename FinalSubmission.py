@@ -23,15 +23,16 @@ def multiple_people():
     #print(numberOfPeople)
 
     if numberOfPeople > 1:
-        print("Maybe Cheating through Multiple People")
+        print("Multiple People Found, Cheating?")
     
     #time.sleep(20)
 
 def screen_sharing():
-    client = vision.ImageAnnotatorClient()
-    bbox = {'top': 0, 'left': 0, 'width': 1900, 'height': 1200}
-    sct = mss()
+    client = vision.ImageAnnotatorClient() #GCP Cloud Vision API
+    bbox = {'top': 0, 'left': 0, 'width': 1900, 'height': 1200}    
     
+    sct = mss()
+    #Grabbing real time screenshot of the device's screen
     sct_img = sct.grab(bbox)
     # cv2.imshow('screen', np.array(sct_img))
     image = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
