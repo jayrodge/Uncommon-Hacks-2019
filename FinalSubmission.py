@@ -15,6 +15,10 @@ predict = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 cap = cv2.VideoCapture(0)
 
 def multiple_people():
+    '''
+    Detects number of faces from the footage from camera using dlib's face
+    landmark predictor
+    '''
     ret, frame = cap.read()
     frame = imutils.resize(frame, width=450)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -28,6 +32,11 @@ def multiple_people():
     #time.sleep(20)
 
 def screen_sharing():
+    '''
+    This function constantly checks for any screen sharing software,
+    if the participant is using, through several parameters like some
+    type of text on the screenshot using google cloud vision API
+    '''
     client = vision.ImageAnnotatorClient() #GCP Cloud Vision API
     bbox = {'top': 0, 'left': 0, 'width': 1900, 'height': 1200}    
     
@@ -50,6 +59,9 @@ def screen_sharing():
     #time.sleep(10)
         
 def thread_scheduler():
+    '''
+    Thread for constant running the two functions 
+    '''
     t_end = time.time() + 60
     keyboard.block_key('print screen')
     
